@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LokiPortal
+  m_Shader: {fileID: 4800000, guid: 5db41c25b1f513d44b90e5eaf4e338e0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: a2c40062dacd9064f9bf14f397dd23a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f3486c14321337c4185df4a5d2fbc484, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainBumpMap:
+        m_Texture: {fileID: 2800000, guid: 6f87733e16fae054baf9ce27a314d59f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RainTex:
+        m_Texture: {fileID: 2800000, guid: 19cdfae21a57488438ae74d4174c64fd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Brightness: 41.9
+    - _FadeLength: 0.7
+    - _Glossiness: 1
+    - _Metallic: 1
+    - _NormalIntensity: 50
+    - _Outline: 1.2
+    - _OutlineSharpness: -100
+    - _RimPower: 1
+    - _StandardDeviation: 7.66
+    m_Colors:
+    - _Color: {r: 1, g: 0.7016585, b: 0, a: 0.14901961}
+    - _OutlineColor: {r: 1, g: 0.61947215, b: 0, a: 1}
+    - _OutlineTint: {r: 0.9622642, g: 0.9372151, b: 0.11347453, a: 1}
+    - _TotallyTransparentColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
