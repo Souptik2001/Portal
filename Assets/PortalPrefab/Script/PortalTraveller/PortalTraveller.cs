@@ -90,46 +90,51 @@ public class PortalTraveller : MonoBehaviour
         }
         if (!isClone && nearPortal != null && farPortal != null)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, maxDistancePortalOrigin, portalOriginPlatforms))
+            if (!portalOpen)
             {
-                RaycastHit hitBox;
-                Vector3 centerOfPortal = hit.point + (Vector3.up * (portalDimension.y / 2));
-                if (Physics.BoxCast(hit.point, new Vector3(portalDimension.x, 1, portalDimension.z) / 2, hit.point + Vector3.up, out hitBox, transform.rotation, portalDimension.y, portalOriginPlatforms))
+                RaycastHit hit;
+                if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, maxDistancePortalOrigin, portalOriginPlatforms))
                 {
-                    Debug.Log("Sorry portal can't be formed");
-                }
-                else
-                {
-                    if (nearPortal.GetComponent<OpenAndClose>().presentPortalState())
+                    RaycastHit hitBox;
+                    Vector3 centerOfPortal = hit.point + (Vector3.up * (portalDimension.y / 2));
+                    if (Physics.BoxCast(hit.point, new Vector3(portalDimension.x, 1, portalDimension.z) / 2, hit.point + Vector3.up, out hitBox, transform.rotation, portalDimension.y, portalOriginPlatforms))
                     {
-                        RaycastHit hit2;
-                        if (Physics.Raycast(farPortalThrowablePosition.position, Vector3.down, out hit2, maxDistancePortalOrigin, portalOriginPlatforms))
-                        {
-                            farPortalPosition = hit2.point + (Vector3.up * (portalDimension.y / 2));
-                            nearPortal.transform.position = centerOfPortal;
-                            farPortal.transform.position = farPortalPosition;
-                            // nearPortal.transform.rotation = transform.rotation;
-                            // farPortal.transform.rotation = transform.rotation;
-                            portalOpen = true;
-                        }
-                        else
-                        {
-                            Debug.Log("No platforms near to creat the far portal");
-                        }
+                        Debug.Log("Sorry portal can't be formed");
                     }
                     else
                     {
-                        portalOpen = false;
+                        if (nearPortal.GetComponent<OpenAndClose>().presentPortalState())
+                        {
+                            RaycastHit hit2;
+                            if (Physics.Raycast(farPortalThrowablePosition.position, Vector3.down, out hit2, maxDistancePortalOrigin, portalOriginPlatforms))
+                            {
+                                farPortalPosition = hit2.point + (Vector3.up * (portalDimension.y / 2));
+                                nearPortal.transform.position = centerOfPortal;
+                                farPortal.transform.position = farPortalPosition;
+                                // nearPortal.transform.rotation = transform.rotation;
+                                // farPortal.transform.rotation = transform.rotation;
+                                nearPortal.GetComponent<OpenAndClose>().togglePortalState();
+                                farPortal.GetComponent<OpenAndClose>().togglePortalState();
+                                portalOpen = true;
+                            }
+                            else
+                            {
+                                Debug.Log("No platforms near to creat the far portal");
+                            }
+                        }
                     }
+                }
+                else
+                {
+                    Debug.Log("No platforms near to create the near portal");
                 }
             }
             else
             {
-                Debug.Log("No platforms near to create the near portal");
+                nearPortal.GetComponent<OpenAndClose>().togglePortalState();
+                farPortal.GetComponent<OpenAndClose>().togglePortalState();
+                portalOpen = false;
             }
-            nearPortal.GetComponent<OpenAndClose>().togglePortalState();
-            farPortal.GetComponent<OpenAndClose>().togglePortalState();
         }
     }
 
